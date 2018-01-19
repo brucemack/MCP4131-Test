@@ -24,7 +24,7 @@ void setup() {
   pinMode (clkPin,OUTPUT);
 
   digitalWrite(ssPin,HIGH); 
-  digitalWrite(clkPin,HIGH); 
+  digitalWrite(clkPin,LOW); 
 }
 
 // This is just a simple loop that sequences the pot through the full range of 
@@ -41,9 +41,9 @@ void loop() {
 void spiWriteBit(int bit) {
   // Setup the data
   digitalWrite(mosiPin,bit);
-  // The slave samples when clock goes low
-  digitalWrite(clkPin,0);
-  digitalWrite(clkPin,1);
+  // The slave samples when clock goes high
+  digitalWrite(clkPin,HIGH);
+  digitalWrite(clkPin,LOW);
 }
 
 void spiWriteByte(int b) {
